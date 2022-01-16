@@ -4,6 +4,7 @@ import './App.css';
 import CardList from './cardlist'
 import Searchbox from './searchbox'
 import { robots } from './robots'
+import Scroll from './scroll'
 
 class App extends React.Component {
   constructor(props){
@@ -42,7 +43,9 @@ class App extends React.Component {
       <div className="App tc">
         <h1>Robo Friends</h1>
         <Searchbox value={this.state.search} onChange={this.update}/>
-        <CardList list={filtered} />
+        <Scroll>
+          <CardList list={filtered} />
+        </Scroll>
       </div>
     )
   }
