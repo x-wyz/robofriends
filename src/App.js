@@ -9,7 +9,8 @@ class App extends React.Component {
   constructor(props){
     super(props)
     this.state = {
-      search: ""
+      search: "",
+      robots: []
     }
     this.update = this.update.bind(this)
   }
@@ -20,10 +21,22 @@ class App extends React.Component {
     })
   }
 
+  componentDidMount(){
+    fetch("https://jsonplaceholder.typicode.com/users")
+      .then(response => {
+        return response.json()
+      })
+      .then(users => {
+        this.setState({
+          robots: users
+        })
+      })
+  }
+
   render(){
 
-    let filtered = robots.filter(robot => {
-      return robot.name.toLowerCase().includes(this.state.search)
+    let filtered = this.state.robots.filter(robot => {
+      return robot.name.toLowerCase().includes(this.state.search.toLowerCase())
     })
     return (
       <div className="App tc">
