@@ -1,10 +1,9 @@
 import React from 'react'
 import './App.css';
 
-import CardList from './cardlist'
-import Searchbox from './searchbox'
-import { robots } from './robots'
-import Scroll from './scroll'
+import CardList from '../components/cardlist'
+import Searchbox from '../components/searchbox'
+import Scroll from '../components/scroll'
 
 class App extends React.Component {
   constructor(props){
@@ -35,14 +34,14 @@ class App extends React.Component {
   }
 
   render(){
-
-    let filtered = this.state.robots.filter(robot => {
-      return robot.name.toLowerCase().includes(this.state.search.toLowerCase())
+    const { search, robots } = this.state;
+    let filtered = robots.filter(robot => {
+      return robot.name.toLowerCase().includes(search.toLowerCase())
     })
     return (
       <div className="App tc">
         <h1>Robo Friends</h1>
-        <Searchbox value={this.state.search} onChange={this.update}/>
+        <Searchbox value={search} onChange={this.update}/>
         <Scroll>
           <CardList list={filtered} />
         </Scroll>
