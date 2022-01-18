@@ -4,13 +4,14 @@ import './App.css';
 import CardList from '../components/cardlist'
 import Searchbox from '../components/searchbox'
 import Scroll from '../components/scroll'
+import { robots } from './robots'
 
 class App extends React.Component {
   constructor(props){
     super(props)
     this.state = {
       search: "",
-      robots: []
+      robots: robots
     }
     this.update = this.update.bind(this)
   }
